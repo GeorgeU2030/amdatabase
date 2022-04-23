@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #92c5f6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="43.0" layoutY="43.0" prefHeight="331.0" prefWidth="504.0" style="-fx-background-color: white;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="139.0" text="UNITED STATES" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="31.0" prefHeight="25.0" prefWidth="139.0" text="BRAZIL" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="31.0" prefHeight="25.0" prefWidth="139.0" text="MEXICO" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="56.0" prefHeight="25.0" prefWidth="139.0" text="COLOMBIA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="56.0" prefHeight="25.0" prefWidth="139.0" text="ARGENTINA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="56.0" prefHeight="25.0" prefWidth="139.0" text="CANADA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="81.0" prefHeight="25.0" prefWidth="139.0" text="PERU" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="81.0" prefHeight="25.0" prefWidth="139.0" text="VENEZUELA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="81.0" prefHeight="25.0" prefWidth="139.0" text="CHILE" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="106.0" prefHeight="25.0" prefWidth="139.0" text="GUATEMALA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="106.0" prefHeight="25.0" prefWidth="139.0" text="ECUADOR" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="106.0" prefHeight="25.0" prefWidth="139.0" text="BOLIVIA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="131.0" prefHeight="25.0" prefWidth="139.0" text="CUBA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="131.0" prefHeight="25.0" prefWidth="139.0" text="HAITI" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="131.0" prefHeight="25.0" prefWidth="139.0" text="DOMINICAN REPUBLIC" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="156.0" prefHeight="25.0" prefWidth="139.0" text="HONDURAS" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="156.0" prefHeight="25.0" prefWidth="139.0" text="PARAGUAY" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="156.0" prefHeight="25.0" prefWidth="139.0" text="NICARAGUA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="181.0" prefHeight="25.0" prefWidth="139.0" text="EL SALVADOR" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="181.0" prefHeight="25.0" prefWidth="139.0" text="COSTA RICA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="181.0" prefHeight="25.0" prefWidth="139.0" text="PANAMA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="206.0" prefHeight="25.0" prefWidth="139.0" text="URUGUAY" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="206.0" prefHeight="25.0" prefWidth="139.0" text="JAMAICA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="206.0" prefHeight="25.0" prefWidth="139.0" text="PUERTO RICO" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="231.0" prefHeight="25.0" prefWidth="139.0" text="TRINIDAD AND TOBAGO" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="231.0" prefHeight="25.0" prefWidth="139.0" text="GUYANA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="231.0" prefHeight="25.0" prefWidth="139.0" text="SURINAM" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="256.0" prefHeight="25.0" prefWidth="139.0" text="BELIZE" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="256.0" prefHeight="25.0" prefWidth="139.0" text="BAHAMAS" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="256.0" prefHeight="25.0" prefWidth="139.0" text="BARBADOS" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="281.0" prefHeight="25.0" prefWidth="139.0" text="SAINT LUCIA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="281.0" prefHeight="25.0" prefWidth="139.0" text="GRENADA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="281.0" prefHeight="25.0" prefWidth="139.0" text="ANTIGUA AND BARBUDA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="305.0" prefHeight="25.0" prefWidth="139.0" text="SAINT VINCENT" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="305.0" prefHeight="25.0" prefWidth="139.0" text="DOMINICA" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="305.0" prefHeight="25.0" prefWidth="139.0" text="SAINT KITTS AND NEVIS" textFill="#12009e">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="14.0" prefHeight="25.0" prefWidth="115.0" text="COUNTRIES" textFill="#12009e">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+      </Label>
+      <MenuBar fx:id="optionMenu" layoutY="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Options">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#backMenu" text="Back" />
+                  <MenuItem mnemonicParsing="false" onAction="#exiit" text="EXIT" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
