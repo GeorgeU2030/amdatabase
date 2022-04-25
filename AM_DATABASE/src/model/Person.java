@@ -12,7 +12,7 @@ public class Person {
 	private String birthDate;
 	Image image1;
 	public Person (String name,String sex) {
-		image1= new Image("icons/bd.png");
+		image1= new Image("https://thispersondoesnotexist.com/");
 		this.name=name;
 		this.sex=sex;
 		this.lastname="";
