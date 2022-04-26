@@ -389,7 +389,48 @@ public class MenuWindowController implements Initializable{
 	        /* for(int i=0;i<PersonData.getPersonData().size();i++) {
 	        	 System.out.println(i+1+""+PersonData.getPersonData().get(i).getName()+" "+PersonData.getPersonData().get(i).getAge()+" "+PersonData.getPersonData().get(i).getHeight()+PersonData.getPersonData().get(i).getBirthDate());
 	         }*/
-	         
+	         FileReader readFile3;
+	         //read the dataset names
+	         readFile3 = new FileReader("src/data/nations.csv");
+				BufferedReader textFile3 = new BufferedReader(readFile3);
+		        String line3;
+		        String fileComplete3="";
+		        while((line3=textFile3.readLine())!=null) {
+					fileComplete3+=line3+",";
+		        }
+		        String[]nationsArray=fileComplete3.split(",");
+		        int indexN=4;
+		        int indexG=2;
+		        double porcentageN=0;
+		        
+		        porcentageN=Double.parseDouble(nationsArray[indexN])*amountPeople;
+		        int amountN=(int)porcentageN;
+		        for(int i=0;i<=amountN;i++) {
+		        	PersonData.getPersonData().get(i).setNationality(nationsArray[indexG]);
+		        	if(i==amountPeople) {
+		        		break;
+		        	}
+		        	if(i==amountN) {
+		        		i=amountN;
+		        		indexN+=5;
+		        		indexG+=5;
+		        		porcentageN=Double.parseDouble(nationsArray[indexN])*amountPeople;
+		        		amountN=(int)porcentageN;
+		        		amountN+=i;
+		        	}
+		        	
+		        }
+		        indexG=2;
+		        for(int i=amountN+1;i<amountPeople;i++) {
+		        	PersonData.getPersonData().get(i).setNationality(nationsArray[indexG]);
+		        	indexG+=5;
+		        	if(indexG>177) {
+		        		indexG=2;
+		        	}
+		        }
+		    
+		        
+	           
 	    }
 	    
 	    @FXML

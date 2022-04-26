@@ -10,6 +10,7 @@ public class Person {
 	private int age;
 	private int height;
 	private String birthDate;
+	private String nationality;
 	Image image1;
 	public Person (String name,String sex) {
 		image1= new Image("https://thispersondoesnotexist.com/");
@@ -59,6 +60,12 @@ public class Person {
 	}
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
+	}
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
 	}
 	
 	
