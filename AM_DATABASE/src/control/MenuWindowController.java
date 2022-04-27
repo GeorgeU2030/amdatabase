@@ -9,8 +9,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -38,7 +41,7 @@ public class MenuWindowController implements Initializable{
 
 
 
-	  private long second;
+	  private long second=100;
 	  
 	    @FXML
 	    private TextField amountTF;
@@ -67,7 +70,7 @@ public class MenuWindowController implements Initializable{
 	    @FXML
 	    private ProgressIndicator pindicator;
 
-	    class thread implements Runnable{
+	   /* class thread implements Runnable{
 
 			@Override
 			public void run() {
@@ -85,16 +88,20 @@ public class MenuWindowController implements Initializable{
 			}
 			  
 		  }
-	    }
+	    }*/
 	    //Method start for generate the database
+	     
+	     
 	    @FXML
 	    void start(ActionEvent event) throws IOException {
 	    	//Method that begins the progressbar-class Thread
-         Thread th = new Thread(new thread());
-         th.start();
+        //Thread th = new Thread(new thread());
+        //th.start();
          //time
-         second=100;
+	    	
          
+	    
+         long inicio = System.currentTimeMillis();
          String amount = amountTF.getText();
          long amountPeople = Long.parseLong(amount);
          FileReader readFile;
@@ -107,6 +114,7 @@ public class MenuWindowController implements Initializable{
 				fileComplete+=line+",";
 				
 	        }
+	       
 	        
 	        //Arraylist for save the names and the sex
 	        ArrayList<Namesex>ns=new ArrayList<>();
@@ -125,6 +133,7 @@ public class MenuWindowController implements Initializable{
 	        }else {
 	        	amountNamesmax=amountPeople;
 	        }
+	        
 	        //times that we will repeat the algorithm
 	        long timesnames=(amountPeople/6783)+1;
 	        for(int i=0;i<timesnames;i++) {
@@ -139,6 +148,7 @@ public class MenuWindowController implements Initializable{
 	        		PersonData.getPersonData().add(person);
 	        	}
 	        }
+	        
 	        FileReader readFile2;
 	         //read the dataset names
 	         readFile2 = new FileReader("src/data/lastnames.csv");
@@ -172,6 +182,7 @@ public class MenuWindowController implements Initializable{
                           PersonData.getPersonData().get(j).setLastname(lastnamesArray.get(j));                           		  
 	        	  }
 	          }
+	          
 	         double age1 = amountPeople*0.19;
 	         long age0_14=(long)age1;
 	         double age2 = amountPeople*0.13;
@@ -199,7 +210,7 @@ public class MenuWindowController implements Initializable{
 	         int dayRandom=0;
 	         int ageRandom=0;
 	         int yearRandom=0;
-	     
+	         
 	         for(int i=0;i<age0_14;i++) {
 	        	
 	        	 yearRandom=(int)(Math.random()*(2022-2008)+2008);
@@ -244,6 +255,7 @@ public class MenuWindowController implements Initializable{
 	             PersonData.getPersonData().get(i).setHeight(height);
 	             PersonData.getPersonData().get(i).setBirthDate(dateString);
 	         }
+	         
 	         long count=age0_14+age15_24;
 	         for(int i=(int)age0_14;i<count;i++) {
 	        	
@@ -279,6 +291,7 @@ public class MenuWindowController implements Initializable{
 	             PersonData.getPersonData().get(i).setHeight(height);
 	             PersonData.getPersonData().get(i).setBirthDate(dateString);
 	         }
+	         
 	         long counta=count;
 	         count = count+age25_54;
 	         for(int i=(int)counta;i<count;i++) {
@@ -336,6 +349,7 @@ public class MenuWindowController implements Initializable{
 	         }
 	         counta=count;
 	         count=count+age65;
+	        
 	         for(int i=(int)counta;i<count;i++) {
               yearRandom=(int)(Math.random()*(1958-1932)+1932);
 	        	 
@@ -361,6 +375,7 @@ public class MenuWindowController implements Initializable{
 	             PersonData.getPersonData().get(i).setHeight(height);
 	             PersonData.getPersonData().get(i).setBirthDate(dateString);
 	         }   
+	        
 	         for(int i=(int)count;i<amountPeople;i++) {
              yearRandom=(int)(Math.random()*(1997-1987)+1987);
 	        	 
@@ -404,6 +419,7 @@ public class MenuWindowController implements Initializable{
 		        double porcentageN=0;
 		        
 		        porcentageN=Double.parseDouble(nationsArray[indexN])*amountPeople;
+		        
 		        int amountN=(int)porcentageN;
 		        for(int i=0;i<=amountN;i++) {
 		        	PersonData.getPersonData().get(i).setNationality(nationsArray[indexG]);
@@ -420,6 +436,7 @@ public class MenuWindowController implements Initializable{
 		        	}
 		        	
 		        }
+		       
 		        indexG=2;
 		        for(int i=amountN+1;i<amountPeople;i++) {
 		        	PersonData.getPersonData().get(i).setNationality(nationsArray[indexG]);
@@ -428,9 +445,17 @@ public class MenuWindowController implements Initializable{
 		        		indexG=2;
 		        	}
 		        }
-		    
+		        pindicator.setProgress(1.0);
+		        pbar.setProgress(1.0);
+		        long fin = System.currentTimeMillis();
+		         
+		        long tiempo = ((fin - inicio)/1000);
+		        String time=String.valueOf(tiempo);
+		        secondLabel.setText(time);
 		        
-	           
+	           for(int i=0;i<PersonData.getPersonData().size();i++) {
+	        	   System.out.println(PersonData.getPersonData().get(i).getName());
+	           }
 	    }
 	    
 	    @FXML
@@ -444,8 +469,16 @@ public class MenuWindowController implements Initializable{
 	    }
 
 	    @FXML
-	    void readClick(ActionEvent event) {
-
+	    void readClick(ActionEvent event)throws Exception {
+	    	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
+			 loader.setController(new SearchController());
+			 Parent parent = (Parent) loader.load();
+			 Stage stage = new Stage();
+			 Scene scene = new Scene(parent);
+			 stage.setScene(scene);
+			 stage.show();
+			 Stage stage2 = (Stage) imageCreate.getScene().getWindow();
+			 stage2.close();
 	    }
 	    
 	    @FXML
@@ -472,6 +505,7 @@ public class MenuWindowController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		Image imcreate = new Image("icons/create.png");
 		Image imread = new Image("icons/read.png");
 		Image imupdate = new Image("icons/update.png");
@@ -484,6 +518,7 @@ public class MenuWindowController implements Initializable{
 		imageAmerican.setImage(imamerican);
 	}
 
+	
 	class Namesex{
 		String name;
 		String sex;
