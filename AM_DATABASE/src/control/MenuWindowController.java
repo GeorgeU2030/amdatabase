@@ -31,12 +31,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import main.Main;
+import model.AVL;
 import model.Person;
 import model.PersonData;
 
 public class MenuWindowController implements Initializable {
 
 	private long second = 100;
+	
+	public static AVL<String>AVLnames = new AVL<>();
 
 	@FXML
 	private TextField amountTF;
@@ -190,6 +193,7 @@ public class MenuWindowController implements Initializable {
 				// we create a person with name and sex
 				Person person = new Person(ns.get(j).name, ns.get(j).sex);
 				PersonData.getPersonData().add(person);
+				AVLnames.insert(ns.get(j).name);
 			}
 		}
 

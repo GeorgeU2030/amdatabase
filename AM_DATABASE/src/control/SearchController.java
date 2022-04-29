@@ -15,18 +15,19 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import model.AVL;
 import model.Person;
 import model.PersonData;
 
 
 public class SearchController implements Initializable {
 
-	private ObservableList<Person> datesRange= FXCollections.observableArrayList();
+	public static ObservableList<String> datesRange= FXCollections.observableArrayList();
 	@FXML
-    private TableColumn<Person,String> columnData;
+    private TableColumn<String,String> columnData;
 	
 	 @FXML
-	 private TableView<Person> tableData;
+	 private TableView<String> tableData;
 	 
 	 @FXML
 	 private MenuBar options;
@@ -40,13 +41,16 @@ public class SearchController implements Initializable {
     @FXML
     void keyTyped(KeyEvent event) {
     	datesRange.removeAll(datesRange);
-     for(int i=0;i<PersonData.getPersonData().size();i++) {
+    	String data =dataTF.getText();
+    	MenuWindowController.AVLnames.search(data);
+    /* for(int i=0;i<PersonData.getPersonData().size();i++) {
     	 if(PersonData.getPersonData().get(i).getName().contains(dataTF.getText())) {
     		 datesRange.add(PersonData.getPersonData().get(i));
     		 
     	 }
     	 
-     }
+     }*/
+    	
      tableData.setItems(datesRange);
      
     }

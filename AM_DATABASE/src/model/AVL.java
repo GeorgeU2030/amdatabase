@@ -1,13 +1,18 @@
 package model;
 
+import java.util.ArrayList;
+
+import control.SearchController;
+
 public class AVL<T extends Comparable<T>> {
 
+	public static ArrayList<String>datas=new ArrayList<>();
 	private static final int difference=1;
 	private Node<T>root;
 	
 	public void insert(T data){
         if (data==null){
-            throw new IllegalArgumentException("Los datos están vacíos");
+            System.out.println("null");
         }
          root= insert(data, this.root);
     }
@@ -45,7 +50,7 @@ public class AVL<T extends Comparable<T>> {
             }
 
         }else if (height(t.getRight())-height(t.getLeft())>difference){
-            // Alta derecha
+            
             if (height(t.getRight().getLeft())>height(t.getRight().getRight())){
                
                 t=doubleRightAndLeft(t);
@@ -91,7 +96,55 @@ public class AVL<T extends Comparable<T>> {
          node.setRight(rotateRight(node.getRight()));
          return rotateLeft(node);
      }
-     public void print() {
-    	 System.out.println(root.getData());
+    
+     public void search(T data) {
+    	search(data,root);
      }
+     private void search(T data,Node<T>t){
+    	
+    	 int compare = data.compareTo(t.getData());
+    	 String datanode = (String) t.getData();
+         String dataString = (String) data;
+        /// System.out.println("root"+t.getData());
+        // System.out.println(compare);
+        // System.out.println("right"+t.getRight().getData());
+        // System.out.println(compare);
+         if(datanode.contains(dataString)) {
+        	// System.out.println("here");
+    		 SearchController.datesRange.add(datanode);
+    		 datas.add(datanode);
+    	 }
+         if(compare>0&&t.getRight()!=null) {
+        	
+        	 if(t.getData().compareTo(data)>0) {
+        		 search(data,t.getLeft());
+        	 }else {
+        		 search(data,t.getRight());
+        	 }
+        	 
+        	 
+         }
+        if(compare>0&&t.getLeft()!=null) {
+        	 search(data,t.getLeft());
+         }
+         
+         if(compare<0&&t.getLeft()!=null) {
+        	 if(t.getData().compareTo(data)<0) {
+        		 search(data,t.getRight());
+        	 }else {
+        	 search(data,t.getLeft());
+        	 }
+        	
+        	 
+         }
+         if(compare<0&&t.getRight()!=null){
+        	 search(data,t.getRight());
+         }
+     }
+
+     
+             
+
+
+     
 }
