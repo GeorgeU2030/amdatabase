@@ -11,13 +11,16 @@ public class Person {
 	private int height;
 	private String birthDate;
 	private String nationality;
-	Image image1;
+	private Image image1;
 	public Person (String name,String sex) {
-		image1= new Image("https://thispersondoesnotexist.com/");
+		this.image1= new Image("https://thispersondoesnotexist.com/");
 		this.name=name;
 		this.sex=sex;
 		this.lastname="";
 		this.age=0;
+		this.height=0;
+		this.birthDate="";
+		this.nationality="";
 	}
 	public Image getImage1() {
 		return image1;

@@ -111,7 +111,7 @@ public class AVL<T extends Comparable<T>> {
         // System.out.println(compare);
          if(datanode.contains(dataString)) {
         	// System.out.println("here");
-    		 SearchController.datesRange.add(datanode);
+    		 //SearchController.datesRange.add(datanode);
     		 datas.add(datanode);
     	 }
          if(compare>0&&t.getRight()!=null) {

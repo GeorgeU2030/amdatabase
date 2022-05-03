@@ -40,6 +40,12 @@ public class MenuWindowController implements Initializable {
 	private long second = 100;
 	
 	public static AVL<String>AVLnames = new AVL<>();
+	
+	public static AVL<String>AVLlastnames = new AVL<>();
+	
+	public static AVL<String>AVLcompletename = new AVL<>();
+	
+	public static AVL<String>AVLcode = new AVL<>();
 
 	@FXML
 	private TextField amountTF;
@@ -106,7 +112,7 @@ public class MenuWindowController implements Initializable {
 	@FXML
 	void readClick(ActionEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
-		loader.setController(new SearchController());
+		loader.setController(new SearchController("READ"));
 		Parent parent = (Parent) loader.load();
 		Stage stage = new Stage();
 		Scene scene = new Scene(parent);
@@ -158,11 +164,17 @@ public class MenuWindowController implements Initializable {
 		readFile = new FileReader("src/data/names.csv");
 		BufferedReader textFile = new BufferedReader(readFile);
 		String line;
+		int countNames=0;
 		String fileComplete = "";
-		while ((line = textFile.readLine()) != null) {
+		while ((line = textFile.readLine()) != null&&countNames<amountPeople) {
 			fileComplete += line + ",";
-
-		}
+            countNames++;
+           
+			
+	}
+		Platform.runLater(()->{
+			pbar.setProgress(0.1);
+		});
 
 		// Arraylist for save the names and the sex
 		ArrayList<Namesex> ns = new ArrayList<>();
@@ -196,7 +208,9 @@ public class MenuWindowController implements Initializable {
 				AVLnames.insert(ns.get(j).name);
 			}
 		}
-
+		Platform.runLater(()->{
+			pbar.setProgress(0.15);
+		});
 		FileReader readFile2;
 		// read the dataset names
 		readFile2 = new FileReader("src/data/lastnames.csv");
@@ -208,10 +222,10 @@ public class MenuWindowController implements Initializable {
 		//Platform.runLater(()->{});
 		
 	
-		
+		long countLast=0;
 		int total = 10000;
 		int aux = 0;
-		while ((line2 = textFile2.readLine()) != null) {
+		while ((line2 = textFile2.readLine()) != null&&countLast<amountPeople) {
 			fileComplete2 += line2 + ",";
 		
 			aux++;
@@ -220,19 +234,26 @@ public class MenuWindowController implements Initializable {
 			Platform.runLater(()->{
 				pbar.setProgress((double) auxCopy /total);
 			});
-		
+		    countLast++;
 			
 		}
 		
 		Platform.runLater(()->{
-			pbar.setProgress(1);
+			pbar.setProgress(0.3);
 		});
 		
+        int countlast2=0;
+        
 		ArrayList<String> lastnamesArray = new ArrayList<>();
 		String[] lastnamesString = fileComplete2.split(",");
 		for (int i = 0; i < lastnamesString.length; i = i + 11) {
 			lastnamesString[i] = lastnamesString[i].substring(1, lastnamesString[i].length() - 1);
 			lastnamesArray.add(lastnamesString[i]);
+			countlast2++;
+			if(countlast2==amountPeople) {
+				break;
+			}
+			
 		}
 
 		long timesLnames = (amountPeople / 10000) + 1;
@@ -250,6 +271,7 @@ public class MenuWindowController implements Initializable {
 			Collections.shuffle(lastnamesArray);
 			for (int j = 0; j < amountLnamesmax; j++) {
 				PersonData.getPersonData().get(j).setLastname(lastnamesArray.get(j));
+				
 			}
 		}
 
@@ -280,7 +302,9 @@ public class MenuWindowController implements Initializable {
 		int dayRandom = 0;
 		int ageRandom = 0;
 		int yearRandom = 0;
-
+		Platform.runLater(()->{
+			pbar.setProgress(0.4);
+		});
 		for (int i = 0; i < age0_14; i++) {
 
 			yearRandom = (int) (Math.random() * (2022 - 2008) + 2008);
@@ -326,7 +350,9 @@ public class MenuWindowController implements Initializable {
 			PersonData.getPersonData().get(i).setHeight(height);
 			PersonData.getPersonData().get(i).setBirthDate(dateString);
 		}
-
+		Platform.runLater(()->{
+			pbar.setProgress(0.5);
+		});
 		long count = age0_14 + age15_24;
 		for (int i = (int) age0_14; i < count; i++) {
 
@@ -363,7 +389,9 @@ public class MenuWindowController implements Initializable {
 			PersonData.getPersonData().get(i).setHeight(height);
 			PersonData.getPersonData().get(i).setBirthDate(dateString);
 		}
-
+		Platform.runLater(()->{
+			pbar.setProgress(0.6);
+		});
 		long counta = count;
 		count = count + age25_54;
 		for (int i = (int) counta; i < count; i++) {
@@ -421,6 +449,9 @@ public class MenuWindowController implements Initializable {
 			PersonData.getPersonData().get(i).setHeight(height);
 			PersonData.getPersonData().get(i).setBirthDate(dateString);
 		}
+		Platform.runLater(()->{
+			pbar.setProgress(0.7);
+		});
 		counta = count;
 		count = count + age65;
 
@@ -450,7 +481,9 @@ public class MenuWindowController implements Initializable {
 			PersonData.getPersonData().get(i).setHeight(height);
 			PersonData.getPersonData().get(i).setBirthDate(dateString);
 		}
-
+		Platform.runLater(()->{
+			pbar.setProgress(0.8);
+		});
 		for (int i = (int) count; i < amountPeople; i++) {
 			yearRandom = (int) (Math.random() * (1997 - 1987) + 1987);
 
@@ -496,7 +529,9 @@ public class MenuWindowController implements Initializable {
 		int indexN = 4;
 		int indexG = 2;
 		double porcentageN = 0;
-
+		Platform.runLater(()->{
+			pbar.setProgress(0.9);
+		});
 		porcentageN = Double.parseDouble(nationsArray[indexN]) * amountPeople;
 
 		int amountN = (int) porcentageN;
@@ -525,7 +560,7 @@ public class MenuWindowController implements Initializable {
 			}
 		}
 		long fin = System.currentTimeMillis();
-
+       
 		long tiempo = ((fin - inicio) / 1000);
 		String time = String.valueOf(tiempo);
 		
@@ -536,10 +571,10 @@ public class MenuWindowController implements Initializable {
 			secondLabel.setText(time);
 		});
 		
-
-		for (int i = 0; i < PersonData.getPersonData().size(); i++) {
+        
+		/*for (int i = 0; i < PersonData.getPersonData().size(); i++) {
 			System.out.println(PersonData.getPersonData().get(i).getName());
-		}
+		}*/
 	}
 
 	class Namesex {
