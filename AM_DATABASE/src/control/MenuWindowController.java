@@ -113,8 +113,16 @@ public class MenuWindowController implements Initializable {
 	}
 
 	@FXML
-	void deleteClick(ActionEvent event) {
-
+	void deleteClick(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
+		loader.setController(new SearchController("DELETE"));
+		Parent parent = (Parent) loader.load();
+		Stage stage = new Stage();
+		Scene scene = new Scene(parent);
+		stage.setScene(scene);
+		stage.show();
+		Stage stage2 = (Stage) imageCreate.getScene().getWindow();
+		stage2.close();
 	}
 
 	@FXML

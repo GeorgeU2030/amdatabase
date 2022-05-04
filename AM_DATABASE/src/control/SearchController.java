@@ -95,7 +95,7 @@ public class SearchController implements Initializable {
     
     @FXML
     void menu1click(ActionEvent event)throws Exception {
-     if(state.equals("READ")) {
+     if(state.equals("READ") || state.equals("DELETE")) {
     	 FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
   		loader.setController(new SearchController("UPDATE"));
   		Parent parent = (Parent) loader.load();
@@ -120,7 +120,7 @@ public class SearchController implements Initializable {
 
     @FXML
     void menu2click(ActionEvent event)throws Exception {
-    	if(state.equals("READ")||state.equals("UPDATE")) {
+    	if(state.equals("READ")||state.equals("UPDATE") || state.equals("DELETE")) {
     	 FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/UpdateWindow.fxml"));
    		loader.setController(new UpdateWindow("CREATE"));
    		Parent parent = (Parent) loader.load();
@@ -135,7 +135,18 @@ public class SearchController implements Initializable {
 
     @FXML
     void menu3click(ActionEvent event)throws Exception {
-
+    	 if(state.equals("READ") ||state.equals("UPDATE")) {
+        	 FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
+      		loader.setController(new SearchController("DELETE"));
+      		Parent parent = (Parent) loader.load();
+      		Stage stage = new Stage();
+      		Scene scene = new Scene(parent);
+      		stage.setScene(scene);
+      		stage.show();
+      		Stage stage2 = (Stage) dataTF.getScene().getWindow();
+      		stage2.close();
+    
+    	 }
     }
     @FXML
     void backClick(ActionEvent event) throws Exception{
@@ -231,6 +242,8 @@ public class SearchController implements Initializable {
   		stage.show();
   		Stage stage2 = (Stage) buttonAction.getScene().getWindow();
   		stage2.close();
+      }else if(state.equals("DELETE")) {
+    	  
       }
     }
     @FXML
@@ -343,7 +356,7 @@ public class SearchController implements Initializable {
 		   createmenu.setText("UPDATE");
 	   }
 	   if(state.equals("DELETE")) {
-		   
+		   buttonAction.setText("DELETE");
 	   }
 	   imagePerson.setVisible(false);
 	}

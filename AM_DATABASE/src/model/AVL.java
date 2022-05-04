@@ -16,24 +16,107 @@ public class AVL<T extends Comparable<T>> {
         }
          root= insert(data, this.root);
     }
-
+	
     private Node<T> insert(T data,Node<T> t){
         if (t==null){
             return new Node<>(data,null,null);
         }
         int compareResult=data.compareTo(t.getData());
         if (compareResult<0){
-            Node left=insert(data,t.getLeft());
+            Node<T> left=insert(data,t.getLeft());
             t.setLeft(left);
             
         }else if (compareResult>0){
-        	Node right=insert(data,t.getRight());
+        	Node<T> right=insert(data,t.getRight());
         	t.setRight(right);
             
         }else {
             //Are the same, we do nothing
         }
         return balance(t);
+    }
+    public void remove( T data ) {
+        root = remove(data, root);
+    }
+    public Node<T> remove(T data, Node<T> t) {
+        if (t==null)    {
+            return null;
+        }else if (data.compareTo(t.getData()) < 0 ) {	
+            t.setLeft(remove(data,t.getLeft()));
+            int left = t.getLeft() != null ? t.getLeft().depth : 0;
+            if((t.getRight() != null) && (t.getRight().depth - left >= 2)) {
+                int rightHeight = t.getRight().getRight() != null ? t.getRight().getRight().depth : 0;
+                int leftHeight = t.getRight().getLeft() != null ? t.getRight().getLeft().depth : 0;
+                if(rightHeight >= leftHeight) {
+                	 t = rotateRight(t);   
+                }else {
+                	 t = doubleRightAndLeft(t);
+                }  
+            }
+        }
+        else if (data.compareTo(t.getData()) > 0) {
+            t.setRight(remove(data,t.getRight()));
+            int right = t.getRight() != null ? t.getRight().depth : 0;
+            if((t.getLeft() != null) && (t.getLeft().depth - right >= 2)) {
+                int leftHeight = t.getLeft().getLeft() != null ? t.getLeft().getLeft().depth : 0;
+                int rightHeight = t.getLeft().getRight() != null ? t.getLeft().getRight().depth : 0;
+                if(leftHeight >= rightHeight) {
+                	 t = rotateRight(t); 
+                }else {
+                    t = doubleLeftAndRight(t);
+                }
+            }
+        }
+        else if(t.getLeft() != null) {
+            t.setData(getMax(t.getLeft()).getData());
+            remove(t.getData(), t.getLeft());
+            if((t.getRight() != null) && (t.getRight().depth - t.getLeft().depth >= 2)) {
+                int rightHeight = t.getRight().getRight() != null ? t.getRight().getRight().depth : 0;
+                int leftHeight = t.getRight().getLeft() != null ? t.getRight().getLeft().depth : 0;
+                if(rightHeight >= leftHeight) {
+                    t = rotateRight(t);            
+                }else {
+                    t = doubleRightAndLeft(t);
+                    }
+            }
+        }
+         
+        else {
+            t = (t.getLeft() != null) ? t.getLeft() : t.getRight();
+        }
+    
+        if(t != null) {
+            int leftHeight = t.getLeft() != null ? t.getLeft().depth : 0;
+            int rightHeight = t.getRight()!= null ? t.getRight().depth : 0;
+            t.depth = Math.max(leftHeight,rightHeight) + 1;
+        }
+        return t;
+    }
+    
+    public T getMin( ){
+    	if( root==null ) return null;
+        return getMin(root).getData();
+    }
+    
+    private Node<T> getMin(Node<T> t) {
+        if( t == null )
+            return t;
+        while( t.getLeft() != null )
+            t = t.getLeft();
+        return t;
+    }
+
+    public T getMax( ){
+        if( root==null ) return null;
+        return getMax( root ).getData();
+    }
+    
+    private Node<T> getMax( Node<T> t ){
+        if( t == null )
+            return t;
+        while( t.getRight() != null )
+            t = t.getRight();
+        return t;
     }
     private Node<T> balance(Node<T> t) {
         if (t==null){
@@ -67,7 +150,9 @@ public class AVL<T extends Comparable<T>> {
      private int height(Node<T> t){
         return t==null?-1:t.getDepth();
     }
-     private Node<T>rotateRight(Node<T> node){
+     
+
+     private Node<T>rotateRight(Node<T> node){//rotateWithLeftChild
          Node<T> left=node.getLeft();
          node.setLeft(left.getRight());
          left.setRight(node);
@@ -77,7 +162,7 @@ public class AVL<T extends Comparable<T>> {
          left.setDepth(depth);
          return left;
      }
-     private Node<T> rotateLeft(Node<T> node){
+     private Node<T> rotateLeft(Node<T> node){//rotateWithRightChild
          Node<T> right=node.getRight();
          node.setRight(right.getLeft());
          right.setLeft(node);
@@ -87,12 +172,12 @@ public class AVL<T extends Comparable<T>> {
          right.setDepth(depth);
          return right;
      }
-     private Node<T> doubleLeftAndRight(Node<T> node){
+     private Node<T> doubleLeftAndRight(Node<T> node){//doubleWithLeftChild
     	 
          node.setLeft(rotateLeft(node.getLeft()));
          return rotateRight(node);
      }
-     private Node<T> doubleRightAndLeft(Node<T> node){
+     private Node<T> doubleRightAndLeft(Node<T> node){//doubleWithRightChild 
          node.setRight(rotateRight(node.getRight()));
          return rotateLeft(node);
      }

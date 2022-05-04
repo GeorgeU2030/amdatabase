@@ -1,5 +1,6 @@
 package control;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -109,8 +110,16 @@ public class UpdateWindow implements Initializable{
 		 stage2.close();
     }
     @FXML
-    void deleteWindow(ActionEvent event) {
-
+    void deleteWindow(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
+		loader.setController(new SearchController("DELETE"));
+		Parent parent = (Parent) loader.load();
+		Stage stage = new Stage();
+		Scene scene = new Scene(parent);
+		stage.setScene(scene);
+		stage.show();
+		Stage stage2 = (Stage) nameTF.getScene().getWindow();
+		stage2.close();
     }
 
     @FXML
