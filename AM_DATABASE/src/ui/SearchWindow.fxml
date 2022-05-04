@@ -14,12 +14,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="27.0" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #000094;" text="Search By" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="28.0" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #000094;" text="Search By" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="14.0" />
          </font>
       </Label>
-      <MenuBar fx:id="options" layoutX="141.0" layoutY="33.0" style="-fx-background-color: #92c5f6;">
+      <MenuBar fx:id="options" layoutX="181.0" layoutY="33.0" style="-fx-background-color: #92c5f6;">
         <menus>
           <Menu fx:id="menuOptions" mnemonicParsing="false" text="Options">
             <items>
@@ -42,22 +42,34 @@
             <Font name="Comic Sans MS Bold" size="14.0" />
          </font>
       </Button>
-      <ImageView fx:id="imagePerson" fitHeight="116.0" fitWidth="154.0" layoutX="64.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePerson" fitHeight="116.0" fitWidth="154.0" layoutX="67.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="labelproof" layoutX="45.0" layoutY="268.0" prefHeight="36.0" prefWidth="44.0" />
-      <Label fx:id="labelName" layoutX="62.0" layoutY="268.0" text="Label">
+      <Label fx:id="labelName" layoutX="64.0" layoutY="295.0" text="Label">
          <font>
             <Font name="Comic Sans MS" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="labelLast" layoutX="126.0" layoutY="268.0" text="Label">
+      <Label fx:id="labelLast" layoutX="126.0" layoutY="295.0" text="Label">
          <font>
             <Font name="Comic Sans MS" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="labelAge" layoutX="200.0" layoutY="268.0" text="Label">
+      <Label fx:id="labelAge" layoutX="203.0" layoutY="295.0" text="Label">
          <font>
             <Font name="Comic Sans MS" size="12.0" />
          </font>
       </Label>
+      <MenuBar layoutX="13.0" layoutY="2.0" style="-fx-background-color: #92c5f6;">
+        <menus>
+          <Menu mnemonicParsing="false" text="MENU">
+            <items>
+              <MenuItem fx:id="updatemenu" mnemonicParsing="false" onAction="#menu1click" text="UPDATE" />
+                  <MenuItem fx:id="createmenu" mnemonicParsing="false" onAction="#menu2click" text="CREATE" />
+                  <MenuItem fx:id="deletemenu" mnemonicParsing="false" onAction="#menu3click" text="DELETE" />
+                  <MenuItem mnemonicParsing="false" onAction="#backClick" text="BACK" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

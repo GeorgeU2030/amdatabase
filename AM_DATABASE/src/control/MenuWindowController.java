@@ -100,8 +100,16 @@ public class MenuWindowController implements Initializable {
 	}
 
 	@FXML
-	void createClick(ActionEvent event) {
-
+	void createClick(ActionEvent event)throws Exception {
+		 FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/UpdateWindow.fxml"));
+ 		loader.setController(new UpdateWindow("CREATE"));
+ 		Parent parent = (Parent) loader.load();
+ 		Stage stage = new Stage();
+ 		Scene scene = new Scene(parent);
+ 		stage.setScene(scene);
+ 		stage.show();
+ 		Stage stage2 = (Stage) pbar.getScene().getWindow();
+ 		stage2.close();
 	}
 
 	@FXML
@@ -123,8 +131,16 @@ public class MenuWindowController implements Initializable {
 	}
 
 	@FXML
-	void updateClick(ActionEvent event) {
-
+	void updateClick(ActionEvent event)throws Exception {
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
+		loader.setController(new SearchController("UPDATE"));
+		Parent parent = (Parent) loader.load();
+		Stage stage = new Stage();
+		Scene scene = new Scene(parent);
+		stage.setScene(scene);
+		stage.show();
+		Stage stage2 = (Stage) imageCreate.getScene().getWindow();
+		stage2.close();
 	}
 
 	@FXML

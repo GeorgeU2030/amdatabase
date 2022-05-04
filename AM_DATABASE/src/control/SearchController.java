@@ -10,11 +10,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -23,6 +27,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import main.Main;
 import model.AVL;
 import model.Person;
 import model.PersonData;
@@ -51,7 +58,15 @@ public class SearchController implements Initializable {
 	@FXML
     private TableColumn<Person,String> columnData;
 	
+	@FXML
+    private MenuItem createmenu;
+	
+	 @FXML
+	private MenuItem deletemenu;
 
+	@FXML
+    private MenuItem updatemenu;
+	
     @FXML
     private Label labelAge;
 
@@ -77,8 +92,65 @@ public class SearchController implements Initializable {
 
     @FXML
     private Label labelproof;
+    
     @FXML
-    void clickAction(ActionEvent event) {
+    void menu1click(ActionEvent event)throws Exception {
+     if(state.equals("READ")) {
+    	 FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
+  		loader.setController(new SearchController("UPDATE"));
+  		Parent parent = (Parent) loader.load();
+  		Stage stage = new Stage();
+  		Scene scene = new Scene(parent);
+  		stage.setScene(scene);
+  		stage.show();
+  		Stage stage2 = (Stage) dataTF.getScene().getWindow();
+  		stage2.close();
+     }else if(state.equals("UPDATE")) {
+    	 FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
+ 		loader.setController(new SearchController("READ"));
+ 		Parent parent = (Parent) loader.load();
+ 		Stage stage = new Stage();
+ 		Scene scene = new Scene(parent);
+ 		stage.setScene(scene);
+ 		stage.show();
+ 		Stage stage2 = (Stage) dataTF.getScene().getWindow();
+ 		stage2.close();
+     }
+    }
+
+    @FXML
+    void menu2click(ActionEvent event)throws Exception {
+    	if(state.equals("READ")||state.equals("UPDATE")) {
+    	 FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/UpdateWindow.fxml"));
+   		loader.setController(new UpdateWindow("CREATE"));
+   		Parent parent = (Parent) loader.load();
+   		Stage stage = new Stage();
+   		Scene scene = new Scene(parent);
+   		stage.setScene(scene);
+   		stage.show();
+   		Stage stage2 = (Stage) dataTF.getScene().getWindow();
+   		stage2.close();
+    	}
+    }
+
+    @FXML
+    void menu3click(ActionEvent event)throws Exception {
+
+    }
+    @FXML
+    void backClick(ActionEvent event) throws Exception{
+    	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/MenuWindow.fxml"));
+		 loader.setController(new MenuWindowController());
+		 Parent parent = (Parent) loader.load();
+		 Stage stage = new Stage();
+		 Scene scene = new Scene(parent);
+		 stage.setScene(scene);
+		 stage.show();
+		 Stage stage2 = (Stage) dataTF.getScene().getWindow();
+		 stage2.close();
+    }
+    @FXML
+    void clickAction(ActionEvent event) throws Exception{
       if(state.equals("READ")) {
     	  labelName.setText(personClick.getName());
     	  labelLast.setText(personClick.getLastname());
@@ -120,7 +192,45 @@ public class SearchController implements Initializable {
         	  Image image = new Image("pictures/person7.jpg");
         	  imagePerson.setImage(image);
         	  }
+    		if(pictures.get(0)==8) {
+    	     	  Image image = new Image("pictures/person8.jpg");
+    	     	  imagePerson.setImage(image);
+    	     	  }
+    	   	if(pictures.get(0)==9) {
+    	     	  Image image = new Image("pictures/person9.jpg");
+    	     	  imagePerson.setImage(image);
+    	     	  }
+    	   	if(pictures.get(0)==10) {
+    	     	  Image image = new Image("pictures/person10.jpg");
+    	     	  imagePerson.setImage(image);
+    	     	  }
+    	   	if(pictures.get(0)==11) {
+    	     	  Image image = new Image("pictures/person11.jpg");
+    	     	  imagePerson.setImage(image);
+    	     	  }
+    	   	if(pictures.get(0)==12) {
+    	     	  Image image = new Image("pictures/person12.jpg");
+    	     	  imagePerson.setImage(image);
+    	     	  }
+    	   	if(pictures.get(0)==13) {
+    	     	  Image image = new Image("pictures/person13.jpg");
+    	     	  imagePerson.setImage(image);
+    	     	  }
+    	   	if(pictures.get(0)==14) {
+    	     	  Image image = new Image("pictures/person14.jpg");
+    	     	  imagePerson.setImage(image);
+    	     	  }
     	 // imagePerson.setImage(personClick.getImage1());
+      }else if(state.equals("UPDATE")) {
+    	  FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/UpdateWindow.fxml"));
+  		loader.setController(new UpdateWindow(personClick,"UPDATE"));
+  		Parent parent = (Parent) loader.load();
+  		Stage stage = new Stage();
+  		Scene scene = new Scene(parent);
+  		stage.setScene(scene);
+  		stage.show();
+  		Stage stage2 = (Stage) buttonAction.getScene().getWindow();
+  		stage2.close();
       }
     }
     @FXML
@@ -218,7 +328,23 @@ public class SearchController implements Initializable {
 		labelAge.setVisible(false);
 	   if(state.equals("READ")) {
 			buttonAction.setText("READ");
+			
 		}
+	   if(state.equals("UPDATE")) {
+		   buttonAction.setText("UPDATE");
+		   buttonAction.setStyle("-fx-background-color: #00609c; ");
+		   updatemenu.setText("READ");
+		   
+	   }
+	   if(state.equals("CREATE")) {
+		   buttonAction.setText("CREATE");
+		   buttonAction.setStyle("-fx-background-color: #5dc1b9; ");
+		   updatemenu.setText("READ");
+		   createmenu.setText("UPDATE");
+	   }
+	   if(state.equals("DELETE")) {
+		   
+	   }
 	   imagePerson.setVisible(false);
 	}
 
