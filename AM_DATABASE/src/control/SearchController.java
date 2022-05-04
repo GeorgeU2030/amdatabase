@@ -82,7 +82,7 @@ public class SearchController implements Initializable {
       if(state.equals("READ")) {
     	  labelName.setText(personClick.getName());
     	  labelLast.setText(personClick.getLastname());
-    	  labelAge.setText(String.valueOf(personClick.getAge()));
+    	  labelAge.setText("AGE: "+String.valueOf(personClick.getAge()));
     	  labelName.setVisible(true);
     	  labelLast.setVisible(true);
     	  labelAge.setVisible(true);
@@ -128,18 +128,56 @@ public class SearchController implements Initializable {
     	datesRange.removeAll(datesRange);
     	AVL.datas.removeAll(AVL.datas);
     	String data =dataTF.getText();
-    	
+    	if(menuOptions.getText().equals("Name")) {
+    	columnData.setCellValueFactory(new PropertyValueFactory<>("name"));
     	MenuWindowController.AVLnames.search(data);
-    	
-     for(int i=0;i<PersonData.getPersonData().size();i++) {
-    	 for(int j=0;j<AVL.datas.size();j++) {
-    	 if(PersonData.getPersonData().get(i).getName().equals(AVL.datas.get(j))) {
-    		 datesRange.add(PersonData.getPersonData().get(i));
-    		 
-    	 }
-    	 }
-    	 
-     }
+    	 for(int i=0;i<PersonData.getPersonData().size();i++) {
+        	 for(int j=0;j<AVL.datas.size();j++) {
+        	 if(PersonData.getPersonData().get(i).getName().equals(AVL.datas.get(j))) {
+        		 datesRange.add(PersonData.getPersonData().get(i));
+        		 
+        	 }
+        	 }
+        	 
+         }
+    	}else if(menuOptions.getText().equals("Code")) {
+    	columnData.setCellValueFactory(new PropertyValueFactory<>("code"));
+        MenuWindowController.AVLcode.search(data);	
+        for(int i=0;i<PersonData.getPersonData().size();i++) {
+       	 for(int j=0;j<AVL.datas.size();j++) {
+       	 if(PersonData.getPersonData().get(i).getCode().equals(AVL.datas.get(j))) {
+       		 datesRange.add(PersonData.getPersonData().get(i));
+       		 
+       	 }
+       	 }
+       	 
+        }
+    	}else if(menuOptions.getText().equals("Complete Name")) {
+    	columnData.setCellValueFactory(new PropertyValueFactory<>("completename"));
+        MenuWindowController.AVLcompletename.search(data);
+        for(int i=0;i<PersonData.getPersonData().size();i++) {
+       	 for(int j=0;j<AVL.datas.size();j++) {
+       	 if(PersonData.getPersonData().get(i).getCompletename().equals(AVL.datas.get(j))) {
+       		 datesRange.add(PersonData.getPersonData().get(i));
+       		 
+       	 }
+       	 }
+       	 
+        }
+        }else if(menuOptions.getText().equals("Last Name")) {
+        columnData.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        MenuWindowController.AVLlastnames.search(data);	
+        for(int i=0;i<PersonData.getPersonData().size();i++) {
+       	 for(int j=0;j<AVL.datas.size();j++) {
+       	 if(PersonData.getPersonData().get(i).getLastname().equals(AVL.datas.get(j))) {
+       		 datesRange.add(PersonData.getPersonData().get(i));
+       		 
+       	 }
+       	 }
+       	 
+        }
+        }
+    
     	
      tableData.setItems(datesRange);
      

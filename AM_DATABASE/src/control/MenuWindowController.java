@@ -247,7 +247,7 @@ public class MenuWindowController implements Initializable {
 		ArrayList<String> lastnamesArray = new ArrayList<>();
 		String[] lastnamesString = fileComplete2.split(",");
 		for (int i = 0; i < lastnamesString.length; i = i + 11) {
-			lastnamesString[i] = lastnamesString[i].substring(1, lastnamesString[i].length() - 1);
+			lastnamesString[i] = lastnamesString[i].substring(1, lastnamesString[i].length());
 			lastnamesArray.add(lastnamesString[i]);
 			countlast2++;
 			if(countlast2==amountPeople) {
@@ -271,10 +271,58 @@ public class MenuWindowController implements Initializable {
 			Collections.shuffle(lastnamesArray);
 			for (int j = 0; j < amountLnamesmax; j++) {
 				PersonData.getPersonData().get(j).setLastname(lastnamesArray.get(j));
+				AVLlastnames.insert(lastnamesArray.get(j));
+				PersonData.getPersonData().get(j).setCompletename(PersonData.getPersonData().get(j).getName()+" "+lastnamesArray.get(j));
+				AVLcompletename.insert(PersonData.getPersonData().get(j).getName()+" "+lastnamesArray.get(j));
 				
 			}
 		}
-
+        //person code
+	    ArrayList<String>alphabet=new ArrayList<>();
+	    alphabet.add("A");
+	    alphabet.add("B");
+	    alphabet.add("C");
+	    alphabet.add("D");
+	    alphabet.add("E");
+	    alphabet.add("F");
+	    alphabet.add("G");
+	    alphabet.add("H");
+	    alphabet.add("I");
+	    alphabet.add("J");
+	    alphabet.add("K");
+	    alphabet.add("L");
+	    alphabet.add("M");
+	    alphabet.add("N");
+	    alphabet.add("O");
+	    alphabet.add("P");
+	    alphabet.add("Q");
+	    alphabet.add("R");
+	    alphabet.add("S");
+	    alphabet.add("T");
+	    alphabet.add("U");
+	    alphabet.add("V");
+	    alphabet.add("W");
+	    alphabet.add("X");
+	    alphabet.add("Y");
+	    alphabet.add("Z");
+	    ArrayList<String>numberscode = new ArrayList<>();
+	    numberscode.add("1");
+	    numberscode.add("2");
+	    numberscode.add("3");
+	    numberscode.add("4");
+	    numberscode.add("5");
+	    numberscode.add("6");
+	    numberscode.add("7");
+	    numberscode.add("8");
+	    numberscode.add("9");
+	    numberscode.add("0");
+	    for(int i=0;i<PersonData.getPersonData().size();i++) {
+	    	Collections.shuffle(alphabet);
+	    	Collections.shuffle(numberscode);
+	    	String code = alphabet.get(0)+alphabet.get(1)+alphabet.get(2)+numberscode.get(0)+numberscode.get(1)+numberscode.get(2);
+	    	PersonData.getPersonData().get(i).setCode(code);
+	    	AVLcode.insert(code);
+	    }
 		double age1 = amountPeople * 0.19;
 		long age0_14 = (long) age1;
 		double age2 = amountPeople * 0.13;

@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 public class Person {
 
+	
 	private String name;
 	private String lastname;
 	private String sex;
@@ -11,9 +12,9 @@ public class Person {
 	private int height;
 	private String birthDate;
 	private String nationality;
-	private Image image1;
+	private String code;
+	private String completename;
 	public Person (String name,String sex) {
-		this.image1= new Image("https://thispersondoesnotexist.com/");
 		this.name=name;
 		this.sex=sex;
 		this.lastname="";
@@ -21,12 +22,7 @@ public class Person {
 		this.height=0;
 		this.birthDate="";
 		this.nationality="";
-	}
-	public Image getImage1() {
-		return image1;
-	}
-	public void setImage1(Image image1) {
-		this.image1 = image1;
+		this.code="";
 	}
 	public String getName() {
 		return name;
@@ -69,6 +65,18 @@ public class Person {
 	}
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getCompletename() {
+		return completename;
+	}
+	public void setCompletename(String completename) {
+		this.completename = completename;
 	}
 	
 	
