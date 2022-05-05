@@ -138,6 +138,8 @@ public class UpdateWindow implements Initializable{
     void buttonAction(ActionEvent event) {
      if(state.equals("UPDATE")) {
     	 try {
+    		 
+    	MenuWindowController.deleteDataUpdate(user);
     	 user.setAge(Integer.parseInt(ageTF.getText()));
     	 user.setHeight(Integer.parseInt(heightTF.getText()));
     	 user.setName(nameTF.getText());
@@ -145,18 +147,32 @@ public class UpdateWindow implements Initializable{
     	 user.setSex(sexTF.getText());
     	 user.setBirthDate(birthTF.getText());
     	 user.setNationality(nationalityTF.getText());
+    	 
+    	 MenuWindowController.AVLcompletename.insert(user.getCompletename());
+    	 MenuWindowController.AVLnames.insert(user.getName());
+    	 MenuWindowController.AVLlastnames.insert(user.getLastname());
+    	 
+    	 readWindow(event);
     	 }catch(Exception ex) {
     		 showAlertError();
     	 }
      }else if(state.equals("CREATE")) {
     	 try {
     	 Person person = new Person(nameTF.getText(),sexTF.getText());
+    	 PersonData.getPersonData().add(person);
     	 person.setAge(Integer.parseInt(ageTF.getText()));
     	 person.setHeight(Integer.parseInt(heightTF.getText()));
     	 person.setLastname(lastnameTF.getText());
          person.setBirthDate(birthTF.getText());
          person.setNationality(nationalityTF.getText());
          person.setCode(codeLabel.getText()); 
+         
+         MenuWindowController.AVLcompletename.insert(person.getCompletename());
+    	 MenuWindowController.AVLnames.insert(person.getName());
+    	 MenuWindowController.AVLlastnames.insert(person.getLastname());
+    	 
+    	 showAlertInfo();
+    	 readWindow(event);
     	 }catch(Exception ex) {
     		 showAlertError();
     	 }
@@ -167,6 +183,14 @@ public class UpdateWindow implements Initializable{
         alert.setHeaderText(null);
         alert.setTitle("ERROR");
         alert.setContentText("All Fields are Required");
+        alert.showAndWait();
+    }
+    
+    private void showAlertInfo() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("MESSAGE");
+        alert.setContentText("he person was registered correctly");
         alert.showAndWait();
     }
 	@Override

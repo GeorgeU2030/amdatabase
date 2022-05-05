@@ -662,7 +662,21 @@ public class MenuWindowController implements Initializable {
 	public static boolean deletePerson(Person personClick) {
 		if(PersonData.getPersonData().contains(personClick)) {
 			//PersonData.getPersonData().indexOf(personClick);
+			
+			AVLnames.remove(personClick.getName());
+			AVLlastnames.remove(personClick.getLastname());
+			AVLcompletename.remove(personClick.getCompletename());
+			AVLcode.remove(personClick.getCode());
+			
 			PersonData.getPersonData().remove(personClick);
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	public static boolean deleteDataUpdate(Person personClick) {
+		if(PersonData.getPersonData().contains(personClick)) {
 			AVLnames.remove(personClick.getName());
 			AVLlastnames.remove(personClick.getLastname());
 			AVLcompletename.remove(personClick.getCompletename());
@@ -671,7 +685,6 @@ public class MenuWindowController implements Initializable {
 		}else {
 			return false;
 		}
-		
 	}
 
 }
