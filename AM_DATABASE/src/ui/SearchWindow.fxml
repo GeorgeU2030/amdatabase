@@ -33,7 +33,7 @@
         </menus>
       </MenuBar>
       <TextField fx:id="dataTF" layoutX="286.0" layoutY="34.0" onKeyTyped="#keyTyped" prefHeight="25.0" prefWidth="271.0" />
-      <TableView fx:id="tableData" layoutX="286.0" layoutY="79.0" prefHeight="307.0" prefWidth="271.0" style="-fx-background-color: #92c5f6;">
+      <TableView fx:id="tableData" layoutX="286.0" layoutY="79.0" prefHeight="254.0" prefWidth="271.0" style="-fx-background-color: #92c5f6;">
         <columns>
           <TableColumn fx:id="columnData" prefWidth="270.0" text="Data" />
         </columns>
@@ -73,5 +73,10 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Button defaultButton="true" layoutX="371.0" layoutY="344.0" mnemonicParsing="false" onAction="#refreshBT" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #92c5f6;" text="REFRESH" textFill="#fcfcfc">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

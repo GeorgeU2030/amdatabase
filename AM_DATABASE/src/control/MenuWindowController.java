@@ -659,4 +659,19 @@ public class MenuWindowController implements Initializable {
 		}
 	}
 
+	public static boolean deletePerson(Person personClick) {
+		if(PersonData.getPersonData().contains(personClick)) {
+			//PersonData.getPersonData().indexOf(personClick);
+			PersonData.getPersonData().remove(personClick);
+			AVLnames.remove(personClick.getName());
+			AVLlastnames.remove(personClick.getLastname());
+			AVLcompletename.remove(personClick.getCompletename());
+			AVLcode.remove(personClick.getCode());
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+
 }

@@ -1,5 +1,6 @@
 package control;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -95,6 +97,7 @@ public class SearchController implements Initializable {
     
     @FXML
     void menu1click(ActionEvent event)throws Exception {
+
      if(state.equals("READ") || state.equals("DELETE")) {
     	 FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
   		loader.setController(new SearchController("UPDATE"));
@@ -243,8 +246,20 @@ public class SearchController implements Initializable {
   		Stage stage2 = (Stage) buttonAction.getScene().getWindow();
   		stage2.close();
       }else if(state.equals("DELETE")) {
-    	  
+    	  if(MenuWindowController.deletePerson(personClick)) {
+    		  showAlertError("The person was deleted successfully");
+    	  }else {
+    		  showAlertError("The person could not be deleted");
+    	  }
       }
+    }
+    
+    private void showAlertError(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText(null);
+        alert.setTitle("WARNING");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
     @FXML
     void keyTyped(KeyEvent event) {
@@ -360,6 +375,19 @@ public class SearchController implements Initializable {
 	   }
 	   imagePerson.setVisible(false);
 	}
+	
+	   @FXML
+	    void refreshBT(ActionEvent event) throws IOException {
+		   FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/SearchWindow.fxml"));
+			loader.setController(new SearchController("READ"));
+			Parent parent = (Parent) loader.load();
+			Stage stage = new Stage();
+			Scene scene = new Scene(parent);
+			stage.setScene(scene);
+			stage.show();
+			Stage stage2 = (Stage) dataTF.getScene().getWindow();
+			stage2.close();
+	    }
 
 }
 
